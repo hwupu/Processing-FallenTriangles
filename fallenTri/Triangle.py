@@ -1,18 +1,21 @@
 from ColorScheme import Color
+from Canvas import canvas
 
 class Triangle(object):
-    def __init__(self, _scale=1.0):
-        self.scale = _scale
+    
+    def __init__(self, scale=1.0):
+        self.scale = scale
         self.fromX = 0
-        self.toX = 250
+        self.toX = canvas.width//2
         self.speed = 10
+    
     def draw(self):
-        fill(Color.orange)
+        fill(Color.darkBlue)
         noStroke()
+        
         pushMatrix()
-        deltaX = (self.toX - self.fromX)//self.speed
-        self.fromX += deltaX
-        translate(self.fromX, -self.scale)
+        self.fromX += (self.toX - self.fromX)//self.speed
+        translate(self.fromX - self.scale//2, -self.scale)
         triangle(self.scale/2.0, 0.0,
                  0.0, self.scale,
                  self.scale, self.scale)

@@ -12,9 +12,11 @@ def mouseClicked():
     tri.toX = mouseX
 
 def draw():
-    canvas.draw()
+    canvas.drawBackground()
     
     pushMatrix()
     translate(0, 2*canvas.height//3)
     tri.draw()
     popMatrix()
+    
+    canvas.drawStage()

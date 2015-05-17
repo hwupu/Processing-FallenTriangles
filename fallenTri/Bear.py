@@ -10,7 +10,7 @@ class Bear(object):
         self.speed = 10
     
     def draw(self):
-        fill(Color.darkBlue)
+        fill(Color.orange)
         noStroke()
         
         pushMatrix()

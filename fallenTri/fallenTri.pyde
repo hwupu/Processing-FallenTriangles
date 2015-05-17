@@ -21,14 +21,14 @@ def mouseClicked():
 def draw():
     canvas.drawBackground()
     
-    pushMatrix()
-    translate(0, 2*canvas.height//3)
-    bear.draw()
-    popMatrix()
-    
     for tri in tris:
         #tri.collide()
         tri.move()
         tri.display()
+    
+    pushMatrix()
+    translate(0, 2*canvas.height//3)
+    bear.draw()
+    popMatrix()
     
     canvas.drawStage()

@@ -1,7 +1,9 @@
+from ColorScheme import Color
+
 class Triangle(object):
     Spring = 0.05
     Gravity = 0.00
-    Friction = -0.9
+    Friction = -0.001
 
     def __init__(self, x, y, radius, index, others):
         self.x = x
@@ -11,6 +13,8 @@ class Triangle(object):
         self.others = others
         self.vx = 0
         self.vy = random(0.1,1.0)
+        self.color = Color.shades[int(random(3))]
+        self.alpha = random(0.6, 1.0)
 
     def collide(self):
         for other in self.others[self.index:]:
@@ -33,6 +37,8 @@ class Triangle(object):
         self.vy += self.Gravity
         self.x += self.vx
         self.y += self.vy
+        
+        self.alpha += random(0.5*self.Friction,2*self.Friction)
 
         '''
         if self.x + self.radius > width:
@@ -43,13 +49,16 @@ class Triangle(object):
             #self.vx *= Ball.Friction
         '''
         if self.y + self.radius > height:
+            self.x = random(-10, width+10)
             self.y = random(-200,-45)#height - self.radius
+            self.alpha = random(0.6,1.0)
             #self.vy *= Ball.Friction
         #elif self.y - self.radius < 0:
             #self.y = self.radius
             #self.vy *= Ball.Friction
 
     def display(self):
+        fill(self.color,self.alpha)
         triangle(self.x, self.y+self.radius,
                  self.x-sqrt(3)*self.radius/2.0,
                  self.y-self.radius/2.0,

@@ -27,7 +27,7 @@ def draw():
         tri.display()
     
     pushMatrix()
-    translate(0, 2*canvas.height//3)
+    translate(0, 2 * canvas.height // 3)
     bear.draw()
     popMatrix()
     

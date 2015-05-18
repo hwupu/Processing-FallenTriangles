@@ -1,6 +1,6 @@
 from Canvas import canvas
 import Bear
-import Triangle
+from Triangle import Triangle
 
 tris = []
 NUM_TRIS = 32
@@ -11,12 +11,16 @@ bear = Bear.Bear(50.0)
 def setup():
     canvas.setup()
     for i in range(NUM_TRIS):
-        tris.append(Triangle.Triangle(random(-10,width+10), random(-200,-45),
+        tris.append(Triangle(random(-10,width+10), random(-200,-45),
                           random(15, 45), i, tris))
 
  
 def mouseClicked():
     bear.toX = mouseX
+
+def mouseWheel(event):
+    if 10 > Triangle.Gravity > -10:
+        Triangle.Gravity += event.getCount()
 
 def draw():
     canvas.drawBackground()

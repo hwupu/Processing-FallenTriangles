@@ -2,7 +2,7 @@ from ColorScheme import Color
 
 class Triangle(object):
     Spring = 0.05
-    Gravity = 1.00
+    Gravity = 0.00
     Friction = -0.001
 
     def __init__(self, x, y, radius, index, others):
@@ -31,6 +31,7 @@ class Triangle(object):
                 self.vy -= ay
                 other.vx += ax
                 other.vy += ay
+
     @property
     def max_step(self):
         return abs(self.Gravity)
@@ -41,10 +42,11 @@ class Triangle(object):
 
     def move(self):
         self.vy += self.Gravity
-        if self.max_step > self.vy:
-            self.vy = self.min_step
-        elif self.max_step < self.vy:
-            self.vy = self.max_step
+        if self.Gravity:
+            if self.max_step > self.vy:
+                self.vy = self.min_step
+            elif self.max_step < self.vy:
+                self.vy = self.max_step
         self.x += self.vx
         self.y += self.vy
 

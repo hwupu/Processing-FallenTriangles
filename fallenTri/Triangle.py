@@ -31,7 +31,7 @@ class Triangle(object):
                 self.vy -= ay
                 other.vx += ax
                 other.vy += ay
-        
+
 
     def move(self):
         self.vy += self.Gravity
@@ -41,7 +41,7 @@ class Triangle(object):
             self.vy = 20
         self.x += self.vx
         self.y += self.vy
-        
+
         self.alpha += random(0.5*self.Friction,2*self.Friction)
 
         '''
@@ -52,14 +52,22 @@ class Triangle(object):
             self.x = self.radius
             #self.vx *= Ball.Friction
         '''
+        change_y = False
         if self.y + self.radius > height:
-            self.x = random(-10, width+10)
-            self.y = random(-200,-45)#height - self.radius
-            self.alpha = random(0.6,1.0)
+            change_y = random(-200, -45)   #height - self.radius
+        elif self.y - self.radius < -200:
+            change_y = random(455, 500)
+
+        if change_y:
+            self.x = random(-10, width + 10)
+            self.y = change_y
+            self.alpha = random(0.6, 1.0)
+
             #self.vy *= Ball.Friction
         #elif self.y - self.radius < 0:
             #self.y = self.radius
             #self.vy *= Ball.Friction
+
 
     def display(self):
         fill(self.color,self.alpha)
@@ -68,4 +76,4 @@ class Triangle(object):
                  self.y-self.radius/2.0,
                  self.x+sqrt(3)*self.radius/2.0,
                  self.y-self.radius/2.0)
-        
+

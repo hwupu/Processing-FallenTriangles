@@ -5,15 +5,15 @@ class Canvas(object):
     def setup(self):
         size(self.width, self.height, P2D)
         colorMode(RGB, 1.0)
-        
+
     def drawBackground(self):
         background(Color.lightBlue)
-    
+
     def drawStage(self):
         fill(Color.blue)
         noStroke()
         rect(0, 2*self.height//3, self.width, self.height)
-        
+
         fill(Color.hay)
         textAlign(CENTER)
         textSize(10)

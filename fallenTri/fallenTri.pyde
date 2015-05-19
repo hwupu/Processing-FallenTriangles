@@ -1,6 +1,7 @@
 from Canvas import canvas
 import Bear
 from Triangle import Triangle
+import logging
 
 tris = []
 NUM_TRIS = 32
@@ -21,10 +22,10 @@ def mouseClicked():
 
 def mouseWheel(event):
     Triangle.Gravity += event.getCount()
-    if 10 < Triangle.Gravity:
-        Triangle.Gravity = 10
-    elif -10 > Triangle.Gravity:
-        Triangle.Gravity = 110
+    if 20 < Triangle.Gravity:
+        Triangle.Gravity = 20
+    elif -20 > Triangle.Gravity:
+        Triangle.Gravity = -20
 
 
 def draw():

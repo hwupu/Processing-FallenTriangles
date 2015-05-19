@@ -31,14 +31,20 @@ class Triangle(object):
                 self.vy -= ay
                 other.vx += ax
                 other.vy += ay
+    @property
+    def max_step(self):
+        return abs(self.Gravity)
 
+    @property
+    def min_step(self):
+        return -self.max_step
 
     def move(self):
         self.vy += self.Gravity
-        if -5 >  self.vy:
-            self.vy = -5
-        elif 20 < self.vy:
-            self.vy = 20
+        if self.max_step > self.vy:
+            self.vy = self.min_step
+        elif self.max_step < self.vy:
+            self.vy = self.max_step
         self.x += self.vx
         self.y += self.vy
 

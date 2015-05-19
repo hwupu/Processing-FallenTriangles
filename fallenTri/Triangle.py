@@ -2,7 +2,7 @@ from ColorScheme import Color
 
 class Triangle(object):
     Spring = 0.05
-    Gravity = 0.00
+    Gravity = 1.00
     Friction = -0.001
 
     def __init__(self, x, y, radius, index, others):

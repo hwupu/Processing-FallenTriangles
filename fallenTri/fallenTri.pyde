@@ -19,8 +19,12 @@ def mouseClicked():
     bear.toX = mouseX
 
 def mouseWheel(event):
-    if 10 > Triangle.Gravity > -10:
-        Triangle.Gravity += event.getCount()
+    Triangle.Gravity += event.getCount()
+    if 10 < Triangle.Gravity:
+        Triangle.Gravity = 10
+    elif -10 > Triangle.Gravity:
+        Triangle.Gravity = 110
+    
 
 def draw():
     canvas.drawBackground()

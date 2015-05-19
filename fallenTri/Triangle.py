@@ -35,6 +35,10 @@ class Triangle(object):
 
     def move(self):
         self.vy += self.Gravity
+        if -5 >  self.vy:
+            self.vy = -5
+        elif 20 < self.vy:
+            self.vy = 20
         self.x += self.vx
         self.y += self.vy
         

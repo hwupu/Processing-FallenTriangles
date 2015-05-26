@@ -49,9 +49,13 @@ class Collision(object):
 
     def detect(self):
         width = 100
-        if self.right.x - width < self.left.x:
-            print('collision dected!', self.left.accel, self.right.accel)
-            if self.left.accel > 0 and self.left.accel > self.right.accel:
-                self.left.toX = self.right.x - width * 2
-            elif self.right.accel < 0 and self.left.accel > self.right.accel:
-                self.right.toX = self.left.x + width * 2
+
+        if self.right.x - width >= self.left.x:
+            return
+        if self.left.accel <= self.right.accel:
+            return
+
+        if self.left.accel > 0:
+            self.left.toX = self.right.x - width * 2
+        elif self.right.accel < 0:
+            self.right.toX = self.left.x + width * 2

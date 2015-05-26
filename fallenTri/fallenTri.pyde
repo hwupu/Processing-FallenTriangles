@@ -4,8 +4,6 @@ from Canvas import canvas
 from Triangle import Triangle
 from ColorScheme import Color
 
-
-
 tris = []
 NUM_TRIS = 32
 
@@ -25,9 +23,9 @@ def setup():
     snowman.toX = canvas.width // 3 * 2
 
 def mouseClicked():
-    if mouseButton == LEFT:
+    if mouseButton == RIGHT:
         snowman.toX = mouseX
-    elif mouseButton == RIGHT:
+    elif mouseButton == LEFT:
         bear.toX = mouseX
 
 

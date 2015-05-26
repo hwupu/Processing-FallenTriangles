@@ -1,15 +1,17 @@
-from Canvas import canvas
 import Bear
+
+from Canvas import canvas
 from Triangle import Triangle
-import logging
 from ColorScheme import Color
+
+
 
 tris = []
 NUM_TRIS = 32
 
 bear = Bear.Bear(50.0)
 snowman = Bear.Bear(50.0)
-
+collision = Bear.Collision(bear, snowman)
 
 def setup():
     canvas.setup()
@@ -47,6 +49,7 @@ def draw():
 
     pushMatrix()
     translate(0, 2 * canvas.height // 3)
+    collision.detect()
     bear.draw()
     snowman.draw()
     popMatrix()

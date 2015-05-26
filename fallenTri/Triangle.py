@@ -43,9 +43,9 @@ class Triangle(object):
     def move(self):
         self.vy += self.Gravity
         if self.Gravity:
-            if self.max_step > self.vy:
+            if self.max_step > self.Gravity:
                 self.vy = self.min_step
-            elif self.max_step < self.vy:
+            elif self.max_step < self.Gravity:
                 self.vy = self.max_step
         self.x += self.vx
         self.y += self.vy

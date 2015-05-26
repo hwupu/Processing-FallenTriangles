@@ -2,11 +2,14 @@ from Canvas import canvas
 import Bear
 from Triangle import Triangle
 import logging
+from ColorScheme import Color
 
 tris = []
 NUM_TRIS = 32
 
 bear = Bear.Bear(50.0)
+snowman = Bear.Bear(50.0)
+snowman.color = Color.white
 
 
 def setup():
@@ -17,7 +20,10 @@ def setup():
 
 
 def mouseClicked():
-    bear.toX = mouseX
+    if mouseButton == LEFT:
+        snowman.toX = mouseX
+    elif mouseButton == RIGHT:
+        bear.toX = mouseX
 
 
 def mouseWheel(event):
@@ -39,6 +45,7 @@ def draw():
     pushMatrix()
     translate(0, 2 * canvas.height // 3)
     bear.draw()
+    snowman.draw()
     popMatrix()
 
     canvas.drawStage()

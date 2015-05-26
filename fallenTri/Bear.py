@@ -8,9 +8,10 @@ class Bear(object):
         self.fromX = 0
         self.toX = canvas.width // 2
         self.speed = 10
+        self.color = Color.orange
     
     def draw(self):
-        fill(Color.white)
+        fill(self.color)
         noStroke()
 
         pushMatrix()

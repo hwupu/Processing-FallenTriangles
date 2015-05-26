@@ -15,6 +15,8 @@ class Triangle(object):
         self.vy = random(0.1,1.0)
         self.color = Color.shades[int(random(3))]
         self.alpha = random(0.6, 1.0)
+        self.rotate = random(0, 180)
+        self.rotate_speed = random(-2.5, 2.5)
 
     def collide(self):
         for other in self.others[self.index:]:
@@ -43,12 +45,13 @@ class Triangle(object):
     def move(self):
         self.vy += self.Gravity
         if self.Gravity:
-            if self.max_step > self.Gravity:
+            if self.max_step > self.vy:
                 self.vy = self.min_step
-            elif self.max_step < self.Gravity:
+            elif self.max_step < self.vy:
                 self.vy = self.max_step
         self.x += self.vx
         self.y += self.vy
+        self.rotate += self.rotate_speed
 
         self.alpha += random(0.5*self.Friction,2*self.Friction)
 
@@ -78,10 +81,13 @@ class Triangle(object):
 
 
     def display(self):
+        pushMatrix()
         fill(self.color,self.alpha)
-        triangle(self.x, self.y+self.radius,
-                 self.x-sqrt(3)*self.radius/2.0,
-                 self.y-self.radius/2.0,
-                 self.x+sqrt(3)*self.radius/2.0,
-                 self.y-self.radius/2.0)
-
+        translate(self.x, self.y)
+        rotate(radians(self.rotate))
+        triangle(0, self.radius,
+                 -sqrt(3)*self.radius/2.0,
+                 -self.radius/2.0,
+                 sqrt(3)*self.radius/2.0,
+                 -self.radius/2.0)
+        popMatrix()

@@ -3,16 +3,19 @@ import Bear
 from Triangle import Triangle
 import logging
 from ColorScheme import Color
+import peasy
 
 tris = []
 NUM_TRIS = 32
 
 bear = Bear.Bear(50.0)
 snowman = Bear.Bear(50.0)
+cam = None
 
 
 def setup():
     canvas.setup()
+    cam = peasy.PeasyCam(this, 500, 250, 0, 400)
     for i in range(NUM_TRIS):
         tris.append(Triangle(random(-10,width+10), random(-200,-45),
                              random(15, 45), i, tris))

@@ -3,7 +3,7 @@ from ColorScheme import Color
 class Canvas(object):
     
     def setup(self):
-        size(self.width, self.height, P2D)
+        size(self.width, self.height, P3D)
         colorMode(RGB, 1.0)
 
     def drawBackground(self):
